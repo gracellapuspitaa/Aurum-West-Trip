@@ -1,0 +1,429 @@
+/**
+ * @stylesheet Aurum West Trip Core Application Design Template
+ * @version 1.4.0 (Fixed Leaflet Render Bug)
+ */
+
+/* ==========================================================================
+   1. GLOBAL RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f6;
+    color: #212529;
+    opacity: 0;
+    animation: smoothPageLoad 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes smoothPageLoad {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   2. MAIN CONTAINER LAYOUT
+   ========================================================================== */
+.app-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   3. SIDEBAR NAVIGATION
+   ========================================================================== */
+.sidebar {
+    width: 360px;
+    min-width: 360px;
+    max-width: 360px;
+    background: #ffffff;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    height: 100vh;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.sidebar-header {
+    padding: 35px 20px;
+    background: #111111;
+    color: #ffffff;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.sidebar-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sidebar-header h1 span {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #d4af37;
+    margin-left: 8px;
+}
+
+.sidebar-header p {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    color: #a3a3a3;
+}
+
+/* ==========================================================================
+   4. NAVIGATION TABS
+   ========================================================================== */
+.sidebar-tabs {
+    display: flex;
+    border-bottom: 1px solid #dee2e6;
+    background: #fafafa;
+    flex-shrink: 0;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #737373;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: #111111;
+    border-bottom: 2px solid #d4af37;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 15px;
+    overflow-y: auto;
+    flex: 1;
+    opacity: 0;
+    scroll-behavior: smooth; 
+}
+
+.tab-content.active-content {
+    display: block;
+    animation: smoothTabFade 0.5s ease forwards;
+}
+
+@keyframes smoothTabFade {
+    0% { opacity: 0; transform: translateY(5px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   5. UI DATA LIST CARDS
+   ========================================================================== */
+.section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #a3a3a3;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.section-space { margin-top: 16px; }
+
+.card-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 12px;
+    background: #fdfdfd;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid #eaeaea;
+    transition: all 0.3s ease;
+}
+
+.card-item:hover {
+    border-color: #d4af37;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(212, 175, 55, 0.12);
+}
+
+.card-item.active-card {
+    background: #111111;
+    border-color: #111111;
+    color: white;
+}
+
+.icon-box {
+    width: 32px;
+    height: 32px;
+    background: #f4ecce;
+    color: #c5a028;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    margin-right: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.card-item.active-card .icon-box {
+    background: #d4af37;
+    color: #111111;
+}
+
+.info h3 { font-size: 13px; font-weight: 600; }
+.info p { font-size: 11px; color: #737373; margin-top: 2px; }
+.active-card .info p { color: #cfcfcf; }
+
+/* ==========================================================================
+   6. UI ACCORDION COLLAPSE SYSTEM
+   ========================================================================== */
+.accordion-item {
+    background: #fdfdfd;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    padding: 14px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #111111;
+}
+
+.accordion-header .arrow { font-size: 10px; transition: transform 0.3s ease; }
+.accordion-content { max-height: 0; overflow: hidden; padding: 0 10px; background: #ffffff; transition: all 0.4s ease; }
+
+/* ==========================================================================
+   7. NESTED SUB-CARDS
+   ========================================================================== */
+.sub-card-item {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.sub-card-item:hover { background: #fdfae6; border-color: #d4af37; transform: translateX(2px); }
+.sub-card-item.active-card { background: #111111; color: white; }
+.sub-card-item h4 { font-size: 12px; font-weight: 600; }
+.sub-card-item p { font-size: 11px; color: #737373; margin-top: 2px; }
+.sub-card-item .time { color: #8c701b; font-weight: 500; }
+.sub-card-item.active-card p { color: #cfcfcf; }
+
+/* ==========================================================================
+   8. MAP FRAME LAYOUT
+   ========================================================================== */
+#map-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background-color: #e5e5e9;
+    opacity: 0;
+    animation: mapSmoothReveal 1s 0.2s ease forwards;
+}
+
+@keyframes mapSmoothReveal { from { opacity: 0; } to { opacity: 1; } }
+
+/* ==========================================================================
+   9. GEOLOCATION FLOATING BUTTON
+   ========================================================================== */
+#locate-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 52px;
+    height: 52px;
+    background: #111111;
+    color: #ffffff;
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    animation: floatingButton 3s ease-in-out infinite;
+}
+
+#locate-btn:hover { animation: none; transform: translateY(-4px) scale(1.05); background: #d4af37; }
+
+@keyframes floatingButton {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ==========================================================================
+   10. MAP CUSTOM MARKERS (PERBAIKAN BUG)
+   ========================================================================== */
+/* Kami memindahkan animasi hover transform KHUSUS ke elemen `container` dalam, BUKAN ke `.leaflet-marker-icon` milik Leaflet */
+.pickup-marker-container, .dest-marker-container, .food-marker-container, .emergency-marker-container { 
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
+
+.pickup-marker-container:hover, .dest-marker-container:hover, .food-marker-container:hover, .emergency-marker-container:hover { 
+    transform: scale(1.18); 
+    filter: brightness(1.1); 
+    z-index: 999 !important; 
+}
+
+/* Desain Pickup */
+.pickup-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 36px !important; height: 36px !important; }
+.pickup-badge { width: 36px; height: 36px; background: #111111; color: white; border: 2.5px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; position: absolute; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.pickup-pulse { position: absolute; width: 36px; height: 36px; background: rgba(212,175,55,0.4); border-radius: 50%; animation: radarPulse 2s infinite ease-out; }
+
+/* Desain Destinasi */
+.dest-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 36px !important; height: 36px !important; }
+.dest-badge { width: 36px; height: 36px; background: #ffffff; border: 3px solid #111111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; position: absolute; z-index: 2; box-shadow: 0 4px 12px rgba(0,0,0,0.25); transition: all 0.3s ease; }
+.dest-marker-container:hover .dest-badge { border-color: #d4af37; }
+.dest-glow { position: absolute; width: 36px; height: 36px; border-radius: 50%; box-shadow: 0 0 15px 4px rgba(212,175,55,0.6); }
+
+/* Desain Makanan */
+.food-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 32px !important; height: 32px !important; }
+.food-badge { width: 32px; height: 32px; background: white; border: 2.5px solid #c5a028; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; position: absolute; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.food-pulse { position: absolute; width: 32px; height: 32px; background: rgba(197,160,40,0.4); border-radius: 50%; animation: radarPulse 1.8s infinite ease-out; }
+
+/* Desain Layanan Darurat */
+.emergency-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 32px !important; height: 32px !important; }
+.emergency-badge { width: 32px; height: 32px; background: white; border: 2.5px solid #fa5252; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; position: absolute; z-index: 2; box-shadow: 0 4px 10px rgba(250,82,82,0.25); }
+.emergency-pulse { position: absolute; width: 32px; height: 32px; background: rgba(250,82,82,0.2); border-radius: 50%; animation: radarPulse 2.2s infinite ease-out; }
+
+/* Desain Pelacak GPS Live */
+.user-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 30px !important; height: 30px !important; }
+.user-badge { width: 14px; height: 14px; background: #007aff; border: 2.5px solid white; border-radius: 50%; z-index: 5; }
+.user-pulse { position: absolute; width: 30px; height: 30px; background: rgba(0,122,255,0.3); border-radius: 50%; animation: radarPulse 1.5s infinite ease-out; }
+
+@keyframes radarPulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ==========================================================================
+   11. LEAFLET POPUP OVERRIDES
+   ========================================================================== */
+.compact-popup .leaflet-popup-content-wrapper { border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border-left: 5px solid #d4af37; background: #ffffff; }
+.compact-popup .leaflet-popup-content { margin: 16px 20px !important; width: fit-content !important; min-width: 160px !important; max-width: 220px !important; line-height: 1.4; }
+.compact-popup .leaflet-popup-content h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; color: #111111; letter-spacing: 0.3px; }
+.compact-popup .leaflet-popup-content p { font-size: 12px; color: #555555; margin: 0; font-weight: 400; }
+.compact-popup .leaflet-popup-tip { background: white; box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+.compact-popup .leaflet-popup-close-button { top: 5px !important; right: 5px !important; font-size: 14px !important; color: #cccccc !important; transition: all 0.2s ease; }
+.compact-popup .leaflet-popup-close-button:hover { color: #d4af37 !important; background: none !important; transform: rotate(90deg); }
+
+/* Popup Fade in Animasi */
+.leaflet-popup { animation: popupFade 0.35s ease; }
+@keyframes popupFade { from { opacity: 0; transform: translateY(8px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+/* Sidebar Activation Sync Styling Mapping */
+.card-item, .sub-card-item { transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease; }
+.card-item.active-card, .sub-card-item.active-card { transform: translateX(4px); box-shadow: 0 8px 18px rgba(0,0,0,0.14), 0 0 0 1px rgba(212,175,55,0.12); }
+
+/* UI Scrollbar Khusus */
+.tab-content::-webkit-scrollbar { width: 6px; }
+.tab-content::-webkit-scrollbar-track { background: transparent; }
+.tab-content::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.45); border-radius: 20px; }
+.tab-content::-webkit-scrollbar-thumb:hover { background: rgba(212,175,55,0.75); }
+
+/* ==========================================================================
+   12. LAYOUT MOBILE RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    body {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .app-container {
+        flex-direction: column-reverse;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: 45vh !important;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    #map-container {
+        width: 100% !important;
+        height: 55vh !important;
+    }
+
+    .sidebar-header {
+        padding: 15px 20px !important;
+    }
+
+    .sidebar-header h1 {
+        font-size: 20px !important;
+    }
+
+    .sidebar-header p {
+        font-size: 9px !important;
+        margin-top: 4px !important;
+    }
+
+    .tab-btn {
+        padding: 12px !important;
+        font-size: 10px !important;
+    }
+
+    .tab-content {
+        padding: 15px 10px !important;
+    }
+
+    #locate-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+    }
+}

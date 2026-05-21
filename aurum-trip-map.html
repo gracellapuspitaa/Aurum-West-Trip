@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#111111" />
+    <meta name="description" content="Aurum West Trip - Interactive modern travel map for West Surabaya destinations." />
+    <title>Aurum West Trip | Interactive Travel Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="aurum-trip-map.css" />
+</head>
+<body>
+
+    <main class="app-container">
+        
+        <aside class="sidebar">
+            
+            <div class="sidebar-header">
+                <h1>Aurum<span>West Trip</span></h1>
+                <p>From Urban Style to Lakeside Vibe</p>
+            </div>
+
+            <div class="sidebar-tabs">
+                <button class="tab-btn active" onclick="gantiTab('jemput')">Pick-up Points</button>
+                <button class="tab-btn" onclick="gantiTab('tour')">Tour Itinerary</button>
+            </div>
+
+            <section id="tab-jemput" class="tab-content active-content">
+                <div class="list-container">
+                    
+                    <div class="card-item" id="item-juanda" onclick="fokusKeLokasi(-7.383739, 112.775601, 16, 'item-juanda')">
+                        <div class="icon-box">✈️</div>
+                        <div class="info">
+                            <h3>Juanda Airport</h3>
+                            <p>Domestic/Intl Arrival Terminal</p>
+                        </div>
+                    </div>
+
+                    <div class="card-item" id="item-unair" onclick="fokusKeLokasi(-7.271968, 112.758728, 16, 'item-unair')">
+                        <div class="icon-box">🎓</div>
+                        <div class="info">
+                            <h3>UNAIR Campus B</h3>
+                            <p>Main Education Hub Stop</p>
+                        </div>
+                    </div>
+
+                    <div class="card-item" id="item-gubeng" onclick="fokusKeLokasi(-7.265203, 112.751953, 16, 'item-gubeng')">
+                        <div class="icon-box">🚂</div>
+                        <div class="info">
+                            <h3>Gubeng Station</h3>
+                            <p>Main Railway Station Pick-up</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="tab-tour" class="tab-content">
+                <div class="list-container">
+
+                    <div class="section-title">Main Destinations</div>
+
+                    <div class="card-item" id="item-natura" onclick="fokusKeLokasi(-7.274912, 112.668706, 17, 'item-natura')">
+                        <div class="icon-box">🌳</div>
+                        <div class="info">
+                            <h3>Graha Natura Park</h3>
+                            <p>Lakeside Park & Greenery Space</p>
+                        </div>
+                    </div>
+
+                    <div class="card-item" id="item-ptc" onclick="fokusKeLokasi(-7.289188, 112.675658, 17, 'item-ptc')">
+                        <div class="icon-box">🛍️</div>
+                        <div class="info">
+                            <h3>Pakuwon Trade Center</h3>
+                            <p>Urban Shopping & Lifestyle Center</p>
+                        </div>
+                    </div>
+
+                    <div class="card-item" id="item-gwalk" onclick="fokusKeLokasi(-7.283774, 112.656825, 17, 'item-gwalk')">
+                        <div class="icon-box">🍴</div>
+                        <div class="info">
+                            <h3>G-Walk Citraland</h3>
+                            <p>Culinary Night Market Center</p>
+                        </div>
+                    </div>
+
+                    <div class="section-title section-space">Culinary Guides</div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion('culinary-route')">
+                            <span>🍽️ En-route Food Recommendations</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div id="culinary-route" class="accordion-content">
+                            <div class="sub-card-item" id="item-rustic" onclick="fokusKeLokasi(-7.273957, 112.667666, 17, 'item-rustic')">
+                                <h4>☕ Rustic Market</h4>
+                                <p class="time">🕒 10.00 – 21.00</p>
+                                <p class="price">💰 Rp30.000 - Rp100.000</p>
+                            </div>
+                            <div class="sub-card-item" id="item-mcd" onclick="fokusKeLokasi(-7.287999, 112.678694, 17, 'item-mcd')">
+                                <h4>🍔 McDonald's - Graha Famili</h4>
+                                <p class="time">🕒 24 Hours</p>
+                                <p class="price">💰 Rp20.000 - Rp100.000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion('culinary-local')">
+                            <span>🍛 Surabaya Local Culinary</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div id="culinary-local" class="accordion-content">
+                            <div class="sub-card-item" id="item-bangali" onclick="fokusKeLokasi(-7.276392, 112.683129, 17, 'item-bangali')">
+                                <h4>🍛 Penyetan Bang Ali</h4>
+                                <p class="price">Legendary local spicy culinary experience.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-title section-space">Emergency & Services</div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header emergency-header" onclick="toggleAccordion('emergency-services')">
+                            <span>🚨 Medical & Security Services</span>
+                            <span class="arrow emergency-arrow">▼</span>
+                        </div>
+                        <div id="emergency-services" class="accordion-content">
+                            <div class="sub-card-item emergency-card" id="item-soetomo" onclick="fokusKeLokasi(-7.268086, 112.758055, 17, 'item-soetomo')">
+                                <h4>🏥 Dr. Soetomo Hospital</h4>
+                                <p class="status">🔴 24/7 Main General Emergency Room</p>
+                            </div>
+                            <div class="sub-card-item emergency-card" id="item-ciputra" onclick="fokusKeLokasi(-7.280919, 112.634633, 17, 'item-ciputra')">
+                                <h4>🏥 Ciputra Hospital</h4>
+                                <p class="status">🔴 West Surabaya Regional Emergency</p>
+                            </div>
+                            <div class="sub-card-item emergency-card" id="item-mitra" onclick="fokusKeLokasi(-7.362625, 112.728524, 17, 'item-mitra')">
+                                <h4>🏥 Mitra Keluarga Waru</h4>
+                                <p class="status">🔴 24/7 Advanced Medical Care</p>
+                            </div>
+                            <div class="sub-card-item emergency-card" id="item-tandes" onclick="fokusKeLokasi(-7.276593, 112.684078, 17, 'item-tandes')">
+                                <h4>👮 Tandes Police Station</h4>
+                                <p class="status police-status">🔵 24/7 Community District Security</p>
+                            </div>
+                            <div class="sub-card-item emergency-card" id="item-pemadam" onclick="fokusKeLokasi(-7.294477, 112.671463, 17, 'item-pemadam')">
+                                <h4>🚒 Fire Station</h4>
+                                <p class="status police-status">🟠 Emergency Fire & Disaster Rescue</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </aside>
+
+        <section id="map-container">
+            
+            <div id="map"></div>
+            
+            <button id="locate-btn" onclick="temukanLokasiSaya()" title="Find My Location">📍</button>
+            
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="aurum-trip-map.js"></script>
+</body>
+</html>
