@@ -1,10 +1,11 @@
 /**
  * @stylesheet Aurum West Trip Core Application Design Template
- * @version 1.4.0 (Fixed Leaflet Render Bug)
+ * @version 1.6.0 (Dashed Line & Isolated Animation Rendering Engine)
+ * @architecture Component-Driven CSS Architecture with Core Fluid Responsive Layouts
  */
 
 /* ==========================================================================
-   1. GLOBAL RESET
+   1. GLOBAL RESET SETUP
    ========================================================================== */
 * {
     margin: 0;
@@ -34,7 +35,7 @@ body {
 }
 
 /* ==========================================================================
-   2. MAIN CONTAINER LAYOUT
+   2. MAIN CONTAINMENT ARCHITECTURE
    ========================================================================== */
 .app-container {
     display: flex;
@@ -45,7 +46,7 @@ body {
 }
 
 /* ==========================================================================
-   3. SIDEBAR NAVIGATION
+   3. SIDEBAR COMPONENT STRUCTURAL LAYOUTS
    ========================================================================== */
 .sidebar {
     width: 360px;
@@ -67,6 +68,9 @@ body {
     color: #ffffff;
     text-align: center;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sidebar-header h1 {
@@ -93,7 +97,7 @@ body {
 }
 
 /* ==========================================================================
-   4. NAVIGATION TABS
+   4. TAB INTERFACES STRATEGY CONTROLLERS
    ========================================================================== */
 .sidebar-tabs {
     display: flex;
@@ -142,7 +146,7 @@ body {
 }
 
 /* ==========================================================================
-   5. UI DATA LIST CARDS
+   5. UI VECTOR DATA CARD COMPONENTS
    ========================================================================== */
 .section-title {
     font-size: 11px;
@@ -205,7 +209,7 @@ body {
 .active-card .info p { color: #cfcfcf; }
 
 /* ==========================================================================
-   6. UI ACCORDION COLLAPSE SYSTEM
+   6. COLLAPSIBLE ACCORDION CONTAINER ENGINE
    ========================================================================== */
 .accordion-item {
     background: #fdfdfd;
@@ -231,7 +235,7 @@ body {
 .accordion-content { max-height: 0; overflow: hidden; padding: 0 10px; background: #ffffff; transition: all 0.4s ease; }
 
 /* ==========================================================================
-   7. NESTED SUB-CARDS
+   7. NESTED ITERACTIVE SUB-CARDS METRICS
    ========================================================================== */
 .sub-card-item {
     padding: 10px;
@@ -249,7 +253,7 @@ body {
 .sub-card-item.active-card p { color: #cfcfcf; }
 
 /* ==========================================================================
-   8. MAP FRAME LAYOUT
+   8. MAP FRAME LAYOUT SYSTEMS
    ========================================================================== */
 #map-container {
     flex: 1;
@@ -270,7 +274,7 @@ body {
 @keyframes mapSmoothReveal { from { opacity: 0; } to { opacity: 1; } }
 
 /* ==========================================================================
-   9. GEOLOCATION FLOATING BUTTON
+   9. GEOLOCATION CONTROLLER UI FLOATING TRIGGERS
    ========================================================================== */
 #locate-btn {
     position: absolute;
@@ -302,41 +306,58 @@ body {
 }
 
 /* ==========================================================================
-   10. MAP CUSTOM MARKERS (PERBAIKAN BUG)
+   10. FLOATING BRAND LOGO OVERLAY MODULE (MAP SIDEBAR SEPARATED)
    ========================================================================== */
-/* Kami memindahkan animasi hover transform KHUSUS ke elemen `container` dalam, BUKAN ke `.leaflet-marker-icon` milik Leaflet */
+.aurum-logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 48px; /* Ukuran tinggi */
+    width: 48px;  /* PENTING: Lebar harus sama dengan tinggi agar bulat */
+    object-fit: cover; /* Mencegah logo gepeng jika rasio aslinya bukan persegi 1:1 */
+    display: block;
+    z-index: 1100; 
+    border-radius: 50%; /* PENTING: Ini yang membuatnya menjadi lingkaran penuh */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    background-color: #ffffff; 
+    padding: 3px; /* Efek bingkai putih di sekeliling lingkaran */
+}
+
+/* ==========================================================================
+   11. CUSTOM SYSTEM MARKERS INFRASTRUCTURE (ANTI-SHAKING ENGINE)
+   ========================================================================== */
+/* CRITICAL: Animations are ISOLATED inside container divs. Leaflet native token nodes (.leaflet-marker-icon) are un-transitioned to prevent tracking latency glitches */
 .pickup-marker-container, .dest-marker-container, .food-marker-container, .emergency-marker-container { 
-    transition: transform 0.3s ease, filter 0.3s ease; 
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease; 
 }
 
 .pickup-marker-container:hover, .dest-marker-container:hover, .food-marker-container:hover, .emergency-marker-container:hover { 
     transform: scale(1.18); 
-    filter: brightness(1.1); 
-    z-index: 999 !important; 
+    filter: brightness(1.08); 
+    z-index: 9999 !important; 
 }
 
-/* Desain Pickup */
+/* Vector Design: Pickup Badge Nodes */
 .pickup-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 36px !important; height: 36px !important; }
 .pickup-badge { width: 36px; height: 36px; background: #111111; color: white; border: 2.5px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; position: absolute; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 .pickup-pulse { position: absolute; width: 36px; height: 36px; background: rgba(212,175,55,0.4); border-radius: 50%; animation: radarPulse 2s infinite ease-out; }
 
-/* Desain Destinasi */
+/* Vector Design: Destination Badge Nodes */
 .dest-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 36px !important; height: 36px !important; }
-.dest-badge { width: 36px; height: 36px; background: #ffffff; border: 3px solid #111111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; position: absolute; z-index: 2; box-shadow: 0 4px 12px rgba(0,0,0,0.25); transition: all 0.3s ease; }
-.dest-marker-container:hover .dest-badge { border-color: #d4af37; }
+.dest-badge { width: 36px; height: 36px; background: #ffffff; border: 3px solid #111111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; position: absolute; z-index: 2; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
 .dest-glow { position: absolute; width: 36px; height: 36px; border-radius: 50%; box-shadow: 0 0 15px 4px rgba(212,175,55,0.6); }
 
-/* Desain Makanan */
+/* Vector Design: Food Badge Nodes */
 .food-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 32px !important; height: 32px !important; }
 .food-badge { width: 32px; height: 32px; background: white; border: 2.5px solid #c5a028; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; position: absolute; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 .food-pulse { position: absolute; width: 32px; height: 32px; background: rgba(197,160,40,0.4); border-radius: 50%; animation: radarPulse 1.8s infinite ease-out; }
 
-/* Desain Layanan Darurat */
+/* Vector Design: Civil Emergency Badge Nodes */
 .emergency-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 32px !important; height: 32px !important; }
 .emergency-badge { width: 32px; height: 32px; background: white; border: 2.5px solid #fa5252; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; position: absolute; z-index: 2; box-shadow: 0 4px 10px rgba(250,82,82,0.25); }
 .emergency-pulse { position: absolute; width: 32px; height: 32px; background: rgba(250,82,82,0.2); border-radius: 50%; animation: radarPulse 2.2s infinite ease-out; }
 
-/* Desain Pelacak GPS Live */
+/* Vector Design: Realtime User Tracking Tracker */
 .user-marker-container { position: relative; display: flex; align-items: center; justify-content: center; width: 30px !important; height: 30px !important; }
 .user-badge { width: 14px; height: 14px; background: #007aff; border: 2.5px solid white; border-radius: 50%; z-index: 5; }
 .user-pulse { position: absolute; width: 30px; height: 30px; background: rgba(0,122,255,0.3); border-radius: 50%; animation: radarPulse 1.5s infinite ease-out; }
@@ -347,7 +368,7 @@ body {
 }
 
 /* ==========================================================================
-   11. LEAFLET POPUP OVERRIDES
+   12. LEAFLET POPUP CONTROLLER STYLES OVERRIDES
    ========================================================================== */
 .compact-popup .leaflet-popup-content-wrapper { border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border-left: 5px solid #d4af37; background: #ffffff; }
 .compact-popup .leaflet-popup-content { margin: 16px 20px !important; width: fit-content !important; min-width: 160px !important; max-width: 220px !important; line-height: 1.4; }
@@ -357,22 +378,20 @@ body {
 .compact-popup .leaflet-popup-close-button { top: 5px !important; right: 5px !important; font-size: 14px !important; color: #cccccc !important; transition: all 0.2s ease; }
 .compact-popup .leaflet-popup-close-button:hover { color: #d4af37 !important; background: none !important; transform: rotate(90deg); }
 
-/* Popup Fade in Animasi */
 .leaflet-popup { animation: popupFade 0.35s ease; }
 @keyframes popupFade { from { opacity: 0; transform: translateY(8px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-/* Sidebar Activation Sync Styling Mapping */
-.card-item, .sub-card-item { transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease; }
+/* Sidebar List-Item Selection Focus Visual Styling Mappings */
 .card-item.active-card, .sub-card-item.active-card { transform: translateX(4px); box-shadow: 0 8px 18px rgba(0,0,0,0.14), 0 0 0 1px rgba(212,175,55,0.12); }
 
-/* UI Scrollbar Khusus */
+/* UI Customized Scrollbar Layers Config */
 .tab-content::-webkit-scrollbar { width: 6px; }
 .tab-content::-webkit-scrollbar-track { background: transparent; }
 .tab-content::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.45); border-radius: 20px; }
 .tab-content::-webkit-scrollbar-thumb:hover { background: rgba(212,175,55,0.75); }
 
 /* ==========================================================================
-   12. LAYOUT MOBILE RESPONSIVE
+   13. ADVANCED RESPONSIVE MEDIA SYSTEM (MOBILE ENGINE SPLIT-VIEW)
    ========================================================================== */
 @media (max-width: 768px) {
     body {
@@ -398,32 +417,21 @@ body {
     }
 
     .sidebar-header {
-        padding: 15px 20px !important;
+        padding: 20px !important;
     }
 
-    .sidebar-header h1 {
-        font-size: 20px !important;
+    /* Fluid Map Floating Responsive Branding Coordinates Matrix */
+    .aurum-logo {
+        height: 38px !important; 
+        width: 38px !important; /* Tambahkan ini agar di HP juga tetap bulat */
+        top: 15px !important; 
+        right: 15px !important; 
+        left: auto !important;
     }
 
-    .sidebar-header p {
-        font-size: 9px !important;
-        margin-top: 4px !important;
-    }
-
-    .tab-btn {
-        padding: 12px !important;
-        font-size: 10px !important;
-    }
-
-    .tab-content {
-        padding: 15px 10px !important;
-    }
-
-    #locate-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 46px;
-        height: 46px;
-        font-size: 18px;
-    }
+    .sidebar-header h1 { font-size: 20px !important; }
+    .sidebar-header p { font-size: 9px !important; margin-top: 4px !important; }
+    .tab-btn { padding: 12px !important; font-size: 10px !important; }
+    .tab-content { padding: 15px 10px !important; }
+    #locate-btn { bottom: 20px; right: 20px; width: 46px; height: 46px; font-size: 18px; }
 }
