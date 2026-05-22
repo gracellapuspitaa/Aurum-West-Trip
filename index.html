@@ -204,22 +204,19 @@
         const prevImgBtn = document.querySelector('.prev-img-btn');
         const nextImgBtn = document.querySelector('.next-img-btn');
         
-        let currentCardImages = []; // Menyimpan kumpulan foto dari kartu yang diklik
-        let currentImgIndex = 0;    // Melacak foto nomor berapa yang sedang tampil
+        let currentCardImages = [];
+        let currentImgIndex = 0;
 
-        // Memperbarui gambar di modal sesuai index
         function updateModalImage() {
             if(currentCardImages.length > 0) {
                 modalGalleryImg.src = currentCardImages[currentImgIndex];
             }
         }
 
-        // Buka Modal
         function openModal(card) {
             modalTitle.innerText = card.getAttribute('data-title') || "Title";
             modalDesc.innerText = card.getAttribute('data-desc') || "Description unavailable.";
             
-            // Ambil array foto dari atribut data-images
             try {
                 currentCardImages = JSON.parse(card.getAttribute('data-images'));
             } catch(e) {
@@ -229,7 +226,6 @@
             currentImgIndex = 0;
             updateModalImage();
 
-            // Sembunyikan panah jika fotonya cuma 1
             if(currentCardImages.length <= 1) {
                 prevImgBtn.style.display = 'none';
                 nextImgBtn.style.display = 'none';
@@ -239,16 +235,14 @@
             }
 
             modal.classList.add('show-modal');
-            document.body.style.overflow = 'hidden'; // Kunci layar belakang
+            document.body.style.overflow = 'hidden';
         }
 
-        // Tutup Modal
         function closeModal() {
             modal.classList.remove('show-modal');
-            document.body.style.overflow = 'auto'; // Lepas kunci layar
+            document.body.style.overflow = 'auto';
         }
 
-        // Hubungkan setiap kartu dengan event Click
         cards.forEach(card => {
             card.addEventListener('click', () => openModal(card));
         });
@@ -258,7 +252,6 @@
             if(e.target === modal) closeModal();
         });
 
-        // Tombol Slider Foto di dalam Kartu
         prevImgBtn.addEventListener('click', () => {
             currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : currentCardImages.length - 1;
             updateModalImage();
