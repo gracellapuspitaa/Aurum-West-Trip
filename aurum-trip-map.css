@@ -391,6 +391,35 @@ body {
 .tab-content::-webkit-scrollbar-thumb:hover { background: rgba(212,175,55,0.75); }
 
 /* ==========================================================================
+   TOMBOL BACK TO HOME (PETA)
+   ========================================================================== */
+.back-home-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1100; /* Harus di atas layer Leaflet */
+    background: #111111;
+    color: #d4af37;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-home-btn:hover {
+    background: #d4af37;
+    color: #111111;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
    13. ADVANCED RESPONSIVE MEDIA SYSTEM (MOBILE ENGINE SPLIT-VIEW)
    ========================================================================== */
 @media (max-width: 768px) {
