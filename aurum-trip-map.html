@@ -24,14 +24,22 @@
             </div>
 
             <div class="sidebar-tabs">
-                <button class="tab-btn active" onclick="gantiTab('jemput')">Pick-up Points</button>
+                <button class="tab-btn active" onclick="gantiTab('jemput')">Start Point</button>
                 <button class="tab-btn" onclick="gantiTab('tour')">Tour Itinerary</button>
+            </div>
+
+            <div class="overview-container">
+                <button class="overview-btn" onclick="resetOverview()" title="Reset to default route">
+                    Destinations
+                </button>
             </div>
 
             <section id="tab-jemput" class="tab-content active-content">
                 <div class="list-container">
                     
-                    <div class="card-item" id="item-juanda" onclick="fokusKeLokasi(-7.383739, 112.775601, 16, 'item-juanda')">
+                    <div class="section-title">Main Start Points</div>
+
+                    <div class="card-item" id="item-juanda" onclick="fokusKeLokasi(-7.383739, 112.775601, 14, 'item-juanda')">
                         <div class="icon-box">✈️</div>
                         <div class="info">
                             <h3>Juanda Airport</h3>
@@ -39,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="card-item" id="item-unair" onclick="fokusKeLokasi(-7.271969, 112.758728, 16, 'item-unair')">
+                    <div class="card-item" id="item-unair" onclick="fokusKeLokasi(-7.271968, 112.758728, 14, 'item-unair')">
                         <div class="icon-box">🎓</div>
                         <div class="info">
                             <h3>UNAIR Campus B</h3>
@@ -47,11 +55,37 @@
                         </div>
                     </div>
 
-                    <div class="card-item" id="item-gubeng" onclick="fokusKeLokasi(-7.265203, 112.751953, 16, 'item-gubeng')">
+                    <div class="card-item" id="item-gubeng" onclick="fokusKeLokasi(-7.265203, 112.751953, 14, 'item-gubeng')">
                         <div class="icon-box">🚂</div>
                         <div class="info">
                             <h3>Gubeng Station</h3>
                             <p>Main Railway Station Pick-up</p>
+                        </div>
+                    </div>
+
+                    <div class="section-title section-space">Transit Points</div>
+
+                    <div class="card-item" id="item-haltesma4" onclick="fokusKeLokasi(-7.265448, 112.755471, 16, 'item-haltesma4')">
+                        <div class="icon-box">🚏</div>
+                        <div class="info">
+                            <h3>Halte SMA 4 Surabaya</h3>
+                            <p>Transit Stop near SMA 4</p>
+                        </div>
+                    </div>
+
+                    <div class="card-item" id="item-haltehockey" onclick="fokusKeLokasi(-7.267510, 112.756453, 16, 'item-haltehockey')">
+                        <div class="icon-box">🚏</div>
+                        <div class="info">
+                            <h3>Halte Lapangan Hockey</h3>
+                            <p>Transit Stop at Lapangan Hockey</p>
+                        </div>
+                    </div>
+
+                    <div class="card-item" id="item-halteptc" onclick="fokusKeLokasi(-7.288795, 112.677660, 16, 'item-halteptc')">
+                        <div class="icon-box">🚏</div>
+                        <div class="info">
+                            <h3>Halte PTC</h3>
+                            <p>Transit Stop at Pakuwon Trade</p>
                         </div>
                     </div>
 
@@ -63,6 +97,14 @@
 
                     <div class="section-title">Main Destinations</div>
 
+                    <div class="card-item" id="item-ptc" onclick="fokusKeLokasi(-7.289188, 112.675658, 17, 'item-ptc')">
+                        <div class="icon-box">🛍️</div>
+                        <div class="info">
+                            <h3>Pakuwon Trade Center</h3>
+                            <p>Urban Shopping & Lifestyle Center</p>
+                        </div>
+                    </div>
+
                     <div class="card-item" id="item-natura" onclick="fokusKeLokasi(-7.274912, 112.668706, 17, 'item-natura')">
                         <div class="icon-box">🌳</div>
                         <div class="info">
@@ -71,15 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="card-item" id="item-ptc" onclick="fokusKeLokasi(-7.289189, 112.675658, 17, 'item-ptc')">
-                        <div class="icon-box">🛍️</div>
-                        <div class="info">
-                            <h3>Pakuwon Trade Center</h3>
-                            <p>Urban Shopping & Lifestyle Center</p>
-                        </div>
-                    </div>
-
-                    <div class="card-item" id="item-gwalk" onclick="fokusKeLokasi(-7.283775, 112.656825, 17, 'item-gwalk')">
+                    <div class="card-item" id="item-gwalk" onclick="fokusKeLokasi(-7.283774, 112.656825, 17, 'item-gwalk')">
                         <div class="icon-box">🍴</div>
                         <div class="info">
                             <h3>G-Walk Citraland</h3>
@@ -95,7 +129,7 @@
                             <span class="arrow">▼</span>
                         </div>
                         <div id="culinary-route" class="accordion-content">
-                            <div class="sub-card-item" id="item-rustic" onclick="fokusKeLokasi(-7.273957, 112.667666, 17, 'item-rustic')">
+                            <div class="sub-card-item" id="item-rustic" onclick="fokusKeLokasi(-7.274754, 112.667639, 17, 'item-rustic')">
                                 <h4>☕ Rustic Market</h4>
                                 <p class="time">🕒 10.00 – 21.00</p>
                                 <p class="price">💰 Rp30.000 - Rp100.000</p>
@@ -104,6 +138,10 @@
                                 <h4>🍔 McDonald's - Graha Famili</h4>
                                 <p class="time">🕒 24 Hours</p>
                                 <p class="price">💰 Rp20.000 - Rp100.000</p>
+                            </div>
+                            <div class="sub-card-item" id="item-bangali" onclick="fokusKeLokasi(-7.276392, 112.683129, 17, 'item-bangali')">
+                                <h4>🍛 Penyetan Bang Ali</h4>
+                                <p class="price">Legendary local spicy culinary experience.</p>
                             </div>
                         </div>
                     </div>
@@ -114,9 +152,17 @@
                             <span class="arrow">▼</span>
                         </div>
                         <div id="culinary-local" class="accordion-content">
-                            <div class="sub-card-item" id="item-bangali" onclick="fokusKeLokasi(-7.276392, 112.683129, 17, 'item-bangali')">
-                                <h4>🍛 Penyetan Bang Ali</h4>
-                                <p class="price">Legendary local spicy culinary experience.</p>
+                            <div class="sub-card-item" id="item-joyoboyo" onclick="fokusKeLokasi(-7.298759, 112.734006, 17, 'item-joyoboyo')">
+                                <h4>🍲 Soto Seger Joyoboyo</h4>
+                                <p class="price">Legendary Local Fresh Soto</p>
+                            </div>
+                            <div class="sub-card-item" id="item-paksadak" onclick="fokusKeLokasi(-7.291705, 112.721814, 17, 'item-paksadak')">
+                                <h4>🍛 Tahu Campur Pak Sadak</h4>
+                                <p class="price">Authentic Local Tahu Campur</p>
+                            </div>
+                            <div class="sub-card-item" id="item-semanggi" onclick="fokusKeLokasi(-7.266114, 112.647123, 17, 'item-semanggi')">
+                                <h4>🥗 Kampung Semanggi</h4>
+                                <p class="price">Traditional Surabaya Semanggi Village</p>
                             </div>
                         </div>
                     </div>
@@ -145,9 +191,25 @@
                                 <h4>👮 Tandes Police Station</h4>
                                 <p class="status police-status">🔵 24/7 Community District Security</p>
                             </div>
+                            <div class="sub-card-item emergency-card" id="item-polda" onclick="fokusKeLokasi(-7.322356, 112.730712, 17, 'item-polda')">
+                                <h4>👮 Polda Jatim</h4>
+                                <p class="status police-status">🔵 East Java Regional Police HQ</p>
+                            </div>
+                            <div class="sub-card-item emergency-card" id="item-lakarsantri" onclick="fokusKeLokasi(-7.276200, 112.637701, 17, 'item-lakarsantri')">
+                                <h4>👮 Polsek Lakarsantri</h4>
+                                <p class="status police-status">🔵 District Police Security</p>
+                            </div>
                             <div class="sub-card-item emergency-card" id="item-pemadam" onclick="fokusKeLokasi(-7.294477, 112.671463, 17, 'item-pemadam')">
-                                <h4>🚒 Fire Station</h4>
+                                <h4>🚒 Fire Station Pakuwon Indah</h4>
                                 <p class="status police-status">🟠 Emergency Fire & Disaster Rescue</p>
+                            </div>
+                            <div class="sub-card-item emergency-card" id="item-pmkcitra" onclick="fokusKeLokasi(-7.287947, 112.635783, 17, 'item-pmkcitra')">
+                                <h4>🚒 PMK Citraland</h4>
+                                <p class="status police-status">🟠 Citraland Fire Rescue Unit</p>
+                            </div>
+                            <div class="sub-card-item emergency-card" id="item-pmkuptd" onclick="fokusKeLokasi(-7.314116, 112.695786, 17, 'item-pmkuptd')">
+                                <h4>🚒 PMK UPTD IV Surabaya</h4>
+                                <p class="status police-status">🟠 Regional Fire Rescue</p>
                             </div>
                         </div>
                     </div>
@@ -157,14 +219,11 @@
         </aside>
 
         <section id="map-container">
-            
             <div id="map"></div>
-            
             <button id="locate-btn" onclick="temukanLokasiSaya()" title="Find My Location">📍</button>
-
             <img src="image/IIP_logo.jpg" alt="IIP Logo" class="aurum-logo" />
-            
         </section>
+
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

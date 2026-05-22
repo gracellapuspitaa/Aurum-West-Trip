@@ -435,3 +435,36 @@ body {
     .tab-content { padding: 15px 10px !important; }
     #locate-btn { bottom: 20px; right: 20px; width: 46px; height: 46px; font-size: 18px; }
 }
+
+/* ==========================================================================
+   14. OVERVIEW BUTTON & CONTAINER
+   ========================================================================== */
+.overview-container {
+    padding: 15px 15px 0 15px;
+    background: #fafafa;
+    flex-shrink: 0;
+}
+
+.overview-btn {
+    width: 100%;
+    padding: 12px;
+    background: #111111;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.overview-btn:hover {
+    background: #d4af37;
+    color: #111111;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.2);
+}
