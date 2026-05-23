@@ -35,6 +35,7 @@
 .section-header-text {
     text-align: center;
     font-family: 'Playfair Display', serif;
+    font-style: italic;
     font-size: 2.5rem;
     color: #d4af37;
     margin-bottom: 50px;
