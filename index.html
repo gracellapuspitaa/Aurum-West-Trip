@@ -6,6 +6,27 @@
     <title>Aurum West Trip | Discover West Surabaya</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style-landing.css">
+    
+    <style>
+        /* Mengatur gambar di dalam card agar menyesuaikan bentuk (landscape/portrait) */
+        .card-img-src {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Mencegah gambar gepeng */
+            display: block;
+        }
+        
+        /* Menyembunyikan div placeholder lama */
+        .card-img {
+            display: none;
+        }
+
+        /* Membuat teks deskripsi di dalam popup menjadi rata kanan-kiri */
+        #modalDesc {
+            text-align: justify;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
 
@@ -35,7 +56,7 @@
                     <span>Image Statue</span>
                 </div>
                 <div class="history-text">
-                    <p>The story of Surabaya is a timeless chronicle of courage against the odds. Long before it earned its moniker as the "City of Heroes" during the monumental clash of 1945, Surabaya's destiny was always intertwined with bravery dating back to 1293 when local forces repelled the formidable Mongol invaders. Explore deep-seated history, the revolutionary echoes of Bung Tomo's speeches, and the historic landmarks that stand as monuments to freedom. Discover how the past continues to inspire the future in the heart of East Java.</p>
+                    <p style="text-align: justify;">The story of Surabaya is a timeless chronicle of courage against the odds. Long before it earned its moniker as the "City of Heroes" during the monumental clash of 1945, Surabaya's destiny was always intertwined with bravery dating back to 1293 when local forces repelled the formidable Mongol invaders. Explore deep-seated history, the revolutionary echoes of Bung Tomo's speeches, and the historic landmarks that stand as monuments to freedom. Discover how the past continues to inspire the future in the heart of East Java.</p>
                 </div>
             </div>
         </div>
@@ -47,28 +68,56 @@
     <section class="section">
         <div class="container grid-3">
             <div class="card" 
-                 data-title="Graha Natura" 
-                 data-desc="Amid the concrete architecture of West Surabaya, the Graha Natura lake area emerges as an antithesis that redefines urban lifestyle. In the Aurum West Trip, this area becomes a portrait of the 
-                 cultural shift of modern society, which begins to integrate ecological values into their way of life. Graha Natura is a tangible manifestation of the acculturation between modern environmental aesthetics and human needs for tranquil communal spaces, while also serving as a symbol of West Surabaya's transformation towards a more sustainable city."
-                 data-images='["https://placehold.co/600x800/222/d4af37?text=Graha+Natura+1", "https://placehold.co/600x800/333/d4af37?text=Graha+Natura+2"]'>
-                <div class="card-img">Image</div>
-                <div class="card-title">Graha Natura</div>
-            </div>
-            <div class="card" 
                  data-title="Pakuwon Trade Center" 
-                 data-desc="PTC is a meeting point where Surabaya's traditional culture blends with a global lifestyle. In the Aurum West Trip, we explore PTC as a space for contemporary urban cultural encounters. Here, the combination of modern architecture and the community's consumption patterns reflects the new identity of West Surabaya, a cultural shift where 
-                 public spaces become stages for the expression of today's urban lifestyle."
-                 data-images='["https://placehold.co/600x800/222/d4af37?text=PTC+View+1", "https://placehold.co/600x800/333/d4af37?text=PTC+View+2"]'>
-                <div class="card-img">Image</div>
+                 data-desc="PTC is a meeting point where Surabaya's traditional culture blends with a global lifestyle. In the Aurum West Trip, we explore PTC as a space for contemporary urban cultural encounters. Here, the combination of modern architecture and the community's consumption patterns reflects the new identity of West Surabaya, a cultural shift where public spaces become stages for the expression of today's urban lifestyle."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=PTC+1", "https://placehold.co/600x800/333/d4af37?text=PTC+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=PTC+1" class="card-img-src" alt="PTC">
                 <div class="card-title">Pakuwon Trade Center</div>
             </div>
+            
+            <div class="card" 
+                 data-title="Graha Natura" 
+                 data-desc="Amid the concrete architecture of West Surabaya, the Graha Natura lake area emerges as an antithesis that redefines urban lifestyle. In the Aurum West Trip, this area becomes a portrait of the cultural shift of modern society, which begins to integrate ecological values into their way of life. Graha Natura is a tangible manifestation of the acculturation between modern environmental aesthetics and human needs for tranquil communal spaces."
+                 data-images='["image/graha_natura/2.jpg", "image/graha_natura/6.jpg", "image/graha_natura/5.jpg", "image/graha_natura/4.jpg", "image/graha_natura/3.jpg", "image/graha_natura/2.jpg", "image/graha_natura/1.jpg"]'>
+                <img src="image/graha_natura/7.jpg" class="card-img-src" alt="Graha Natura">
+                <div class="card-title">Graha Natura</div>
+            </div>
+
             <div class="card" 
                  data-title="G-Walk Citraland" 
-                 data-desc="Located in the Lontar area, G-Walk has transformed into a culinary and lifestyle hub for the people of West Surabaya. More than just a culinary destination, G-Walk is a commercial public space that enlivens Surabaya's nightlife through a mix of cafés, restaurants, and various food stalls. In Aurum West Trip, we explore G-Walk 
-                 as an urban architectural manifestation that brings together global culinary tastes with the local community's social hangout traditions, making it a social interaction space that shapes a new identity for Surabaya in the modern era."
-                 data-images='["https://placehold.co/600x800/222/d4af37?text=G-Walk+1", "https://placehold.co/600x800/333/d4af37?text=G-Walk+2", "https://placehold.co/600x800/444/d4af37?text=G-Walk+3"]'>
-                <div class="card-img">Image</div>
+                 data-desc="Located in the Lontar area, G-Walk has transformed into a culinary and lifestyle hub for the people of West Surabaya. More than just a culinary destination, G-Walk is a commercial public space that enlivens Surabaya's nightlife through a mix of cafés, restaurants, and various food stalls. In Aurum West Trip, we explore G-Walk as an urban architectural manifestation that brings together global culinary tastes with the local community's social hangout traditions."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=G-Walk+1", "https://placehold.co/600x800/333/d4af37?text=G-Walk+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=G-Walk+1" class="card-img-src" alt="G-Walk Citraland">
                 <div class="card-title">G-Walk Citraland</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="full-width-title section-header-text">
+        <h2>Shopping Center</h2>
+    </div>
+    <section class="section">
+        <div class="container grid-3">
+            <div class="card" 
+                 data-title="Pakuwon Mall" 
+                 data-desc="One of the largest and most luxurious shopping centers in Indonesia, offering a wide array of international brands, fine dining, and premium entertainment facilities."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Pakuwon+Mall+1", "https://placehold.co/600x800/333/d4af37?text=Pakuwon+Mall+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Pakuwon+Mall+1" class="card-img-src" alt="Pakuwon Mall">
+                <div class="card-title">Pakuwon Mall</div>
+            </div>
+            <div class="card" 
+                 data-title="Pasar Modern Citraland" 
+                 data-desc="A clean, well-organized traditional market concept offering fresh daily produce, local snacks, and various household needs in a modern environment."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Pasar+Modern+1", "https://placehold.co/600x800/333/d4af37?text=Pasar+Modern+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Pasar+Modern+1" class="card-img-src" alt="Pasar Modern Citraland">
+                <div class="card-title">Pasar Modern Citraland</div>
+            </div>
+            <div class="card" 
+                 data-title="Fairway Nine Mall - Surabaya" 
+                 data-desc="A vibrant lifestyle destination designed for the modern family, featuring a unique blend of shopping, dining, and leisure experiences."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Fairway+Nine+1", "https://placehold.co/600x800/333/d4af37?text=Fairway+Nine+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Fairway+Nine+1" class="card-img-src" alt="Fairway Nine">
+                <div class="card-title">Fairway Nine Mall - Surabaya</div>
             </div>
         </div>
     </section>
@@ -80,26 +129,23 @@
         <div class="container grid-3">
             <div class="card" 
                  data-title="Rustic Market" 
-                 data-desc="Rustic Market offers a dining experience with a cozy and peaceful European countryside atmosphere by the lakeside. With a blend of lush indoor and outdoor areas, this place is a favorite spot to relax, enjoy the sunset, or simply unwind from the hustle and bustle of the city. 
-                 It serves Western dishes as well as Indonesian menu options. Price Range: Rp30,000 – Rp150,000+."
-                 data-images='["https://placehold.co/600x800/222/d4af37?text=Rustic+Market+1", "https://placehold.co/600x800/333/d4af37?text=Rustic+Market+2"]'>
-                <div class="card-img">Image</div>
+                 data-desc="Rustic Market offers a dining experience with a cozy and peaceful European countryside atmosphere by the lakeside. With a blend of lush indoor and outdoor areas, this place is a favorite spot to relax, enjoy the sunset, or simply unwind from the hustle and bustle of the city."
+                 data-images='["image/rustic_market/1.jpg", "image/rustic_market/2.jpg", "image/rustic_market/3.jpg", "image/rustic_market/4.jpg", "image/rustic_market/5.jpg", "image/rustic_market/6.jpg", "image/rustic_market/7.jpg", "image/rustic_market/8.jpg"]'>
+                <img src="image/rustic_market/3.jpg" class="card-img-src" alt="Rustic Market">
                 <div class="card-title">Rustic Market</div>
             </div>
             <div class="card" 
                  data-title="Penyetan Bang Ali" 
-                 data-desc="This place is a legendary culinary destination and a local favorite in Surabaya, especially for those craving spicy food at any hour. 
-                 It offers a casual atmosphere, reminiscent of a traditional penyetan street stall but on a larger, more organized scale. It is renowned for its customizable sambal heat levels and a wide variety of side dishes, ranging from chicken and duck to catfish and offal,all served piping hot."
+                 data-desc="This place is a legendary culinary destination and a local favorite in Surabaya, especially for those craving spicy food at any hour. It offers a casual atmosphere, reminiscent of a traditional penyetan street stall but on a larger, more organized scale."
                  data-images='["https://placehold.co/600x800/222/d4af37?text=Penyetan+1", "https://placehold.co/600x800/333/d4af37?text=Penyetan+2"]'>
-                <div class="card-img">Image</div>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Penyetan+1" class="card-img-src" alt="Penyetan Bang Ali">
                 <div class="card-title">Penyetan Bang Ali</div>
             </div>
             <div class="card" 
                  data-title="McDonald's Graha Famili" 
-                 data-desc="McDonald's Graha Famili stands as a hallmark of the fast paced lifestyle in Surabaya Barat, where consistency and convenience define the urban experience. More than just a global brand, this 24 hour location serves as a familiar meeting point for the neighborhood’s dynamic mobility. 
-                 Whether for a quick meal or a quiet late night refuge, it offers the comfort of standardized quality, seamlessly blending into the everyday rhythm of residents amidst the rapid growth of the prestigious Bukit Darmo area."
+                 data-desc="McDonald's Graha Famili stands as a hallmark of the fast paced lifestyle in Surabaya Barat, where consistency and convenience define the urban experience. More than just a global brand, this 24 hour location serves as a familiar meeting point for the neighborhood’s dynamic mobility."
                  data-images='["https://placehold.co/600x800/222/d4af37?text=McD+1", "https://placehold.co/600x800/333/d4af37?text=McD+2"]'>
-                <div class="card-img">Image</div>
+                <img src="https://placehold.co/600x800/222/d4af37?text=McD+1" class="card-img-src" alt="McDonald's">
                 <div class="card-title">McDonald's Graha Famili</div>
             </div>
         </div>
@@ -112,27 +158,53 @@
         <div class="container grid-3">
             <div class="card" 
                  data-title="Soto Seger Joyoboyo" 
-                 data-desc="Soto Seger Joyoboyo offers an authentic traditional taste, defined by its signature clear, herb-infused broth that is both light 
-                 and refreshing. Served in a compact bowl with rice, bean sprouts, tender slices of meat, and a garnish of fried garlic and celery, this dish provides a satisfying culinary experience without the heaviness of coconut milk. The eatery has become a favored destination for those seeking comfort food, perfectly complemented by an array of Javanese-style skewers and crispy fritters. Amidst the city bustle, this spot remains dedicated to its original recipe, bringing people from all walks of life together over the warmth of a simple, inviting meal."
-                 data-images='["image/ssj_1.jpeg", "image/ssj_2.jpeg"]'>
-                <div class="card-img">Image</div>
+                 data-desc="Soto Seger Joyoboyo offers an authentic traditional taste, defined by its signature clear, herb-infused broth that is both light and refreshing. Served in a compact bowl with rice, bean sprouts, tender slices of meat, and a garnish of fried garlic and celery."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Soto+Joyoboyo+1", "https://placehold.co/600x800/333/d4af37?text=Soto+Joyoboyo+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Soto+Joyoboyo+1" class="card-img-src" alt="Soto">
                 <div class="card-title">Soto Seger Joyoboyo</div>
             </div>
             <div class="card" 
                  data-title="Tahu Campur Pak Sadak" 
-                 data-desc="Tahu Campur Pak Sadak serves as an authentic representation of East Javanese cuisine, deeply rooted in the distinct savory profile of petis (fermented shrimp paste). This signature dish combines fried tofu, cassava cakes, tender beef, and fresh lettuce, all bathed in a rich, flavorful beef broth infused with robust spices. Its appeal lies in the perfect harmony of savory and subtle sweet notes achieved through traditional cooking methods. This eatery stands as a go to destination for those seeking the genuine taste of Surabaya, offering a 
-                 consistent and honest culinary experience amidst the landscape of modern dining trends."
+                 data-desc="Tahu Campur Pak Sadak serves as an authentic representation of East Javanese cuisine, deeply rooted in the distinct savory profile of petis. This signature dish combines fried tofu, cassava cakes, tender beef, and fresh lettuce, all bathed in a rich, flavorful beef broth."
                  data-images='["https://placehold.co/600x800/222/d4af37?text=Tahu+Campur+1", "https://placehold.co/600x800/333/d4af37?text=Tahu+Campur+2"]'>
-                <div class="card-img">Image</div>
+                <img src="image/buaya.png" class="card-img-src" alt="Tahu Campur">
                 <div class="card-title">Tahu Campur Pak Sadak</div>
             </div>
             <div class="card" 
                  data-title="Kampung Semanggi" 
-                 data-desc="Semanggi stands as a culinary icon that reflects the deep rooted cultural identity of Surabaya. This traditional dish features steamed clover leaves served with bean sprouts, generously drizzled with a rich sauce made from ground peanuts and savory fermented shrimp paste, known as petis. Its flavor profile offers a harmonious blend of savory, sweet, and subtle spicy notes, perfectly complemented by the crunch of kerupuk uli rice crackers. More than just a meal, Semanggi embodies historical significance as a form of local wisdom, illustrating the 
-                 historic connection between the people of Surabaya and their natural environment. To this day, it remains an authentic symbol that preserves the city's traditional flavors amidst the rapid pace of modernization."
+                 data-desc="Semanggi stands as a culinary icon that reflects the deep rooted cultural identity of Surabaya. This traditional dish features steamed clover leaves served with bean sprouts, generously drizzled with a rich sauce made from ground peanuts and savory fermented shrimp paste."
                  data-images='["https://placehold.co/600x800/222/d4af37?text=Semanggi+1", "https://placehold.co/600x800/333/d4af37?text=Semanggi+2"]'>
-                <div class="card-img">Image</div>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Semanggi+1" class="card-img-src" alt="Semanggi">
                 <div class="card-title">Kampung Semanggi</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="full-width-title section-header-text">
+        <h2>Tourist Souvenirs</h2>
+    </div>
+    <section class="section">
+        <div class="container grid-3">
+            <div class="card" 
+                 data-title="Wisata Rasa Mayjend Sungkono" 
+                 data-desc="The perfect place to hunt for Surabaya's authentic snacks and souvenirs. Known for its famous Almond Crispy Cheese and a wide variety of traditional local delicacies."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Wisata+Rasa+1", "https://placehold.co/600x800/333/d4af37?text=Wisata+Rasa+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Wisata+Rasa+1" class="card-img-src" alt="Wisata Rasa">
+                <div class="card-title">Wisata Rasa Mayjend Sungkono</div>
+            </div>
+            <div class="card" 
+                 data-title="Pusat Oleh - Oleh Keranjang Kenangan" 
+                 data-desc="A one-stop souvenir center that offers unique East Javanese crafts, iconic t-shirts, and beautifully packaged local snacks, perfect for bringing home memories."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Keranjang+Kenangan+1", "https://placehold.co/600x800/333/d4af37?text=Keranjang+Kenangan+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Keranjang+Kenangan+1" class="card-img-src" alt="Keranjang Kenangan">
+                <div class="card-title">Pusat Oleh - Oleh Keranjang Kenangan</div>
+            </div>
+            <div class="card" 
+                 data-title="Spikoe Livana - Mayjend Sungkono" 
+                 data-desc="Famous for its incredibly soft and rich traditional Spikoe (layer cake). Baked using classic family recipes, making it one of the most sought-after edible souvenirs in Surabaya."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Spikoe+Livana+1", "https://placehold.co/600x800/333/d4af37?text=Spikoe+Livana+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Spikoe+Livana+1" class="card-img-src" alt="Spikoe Livana">
+                <div class="card-title">Spikoe Livana - Mayjend Sungkono Surabaya</div>
             </div>
         </div>
     </section>
@@ -146,35 +218,64 @@
             <div class="tier-group">
                 <h3 class="tier-title">100.000</h3>
                 <div class="grid-3">
-                    <div class="card" data-title="Hotel O near Ciputra World Surabaya" data-desc="Hotel located at Jalan Darmo Permai Timur I, RW 01, Sono Kwijenan, Sukomanunggal, Surabaya, with a price range of IDR 170,000 and facilities such as Free Wifi, Free Parking, 24-hour Reception, Restaurant, Family Room, Luggage Storage, 24-hour Room Service, Non-smoking Rooms" data-images='["https://placehold.co/600x800/222/d4af37?text=Budget+Inn+1", "https://placehold.co/600x800/333/d4af37?text=Budget+Inn+2"]'><div class="card-img">Image</div><div class="card-title">Hotel O near Ciputra World Surabaya</div></div>
-                    <div class="card" data-title="RedDoorz near Bukit Darmo Golf" data-desc="Hotel located on Jalan 12 Darmo Permai Timur IV, Dukuh Pakis, Surabaya. With a price range of Rp130,000 and facilities including free Wifi, Car parking, 24-hour reception, Non-smoking rooms, Air conditioning in public areas, hand sanitizer" data-images='["https://placehold.co/600x800/222/d4af37?text=Capsule+1", "https://placehold.co/600x800/333/d4af37?text=Capsule+2"]'><div class="card-img">Image</div><div class="card-title">RedDoorz near Bukit Darmo Golf</div></div>
-                    <div class="card" data-title="Reddoorz Near UNESA Citraland Surabaya" data-desc="Hotel located at Jl. International Timur No.A2 / 3, Citraland, Kec. Sambikerep, Surabaya. With a price range of Rp150,000 and facilities including free Wifi, car parking, bicycle parking, CCTV in public areas" data-images='["https://placehold.co/600x800/222/d4af37?text=Homestay+1", "https://placehold.co/600x800/333/d4af37?text=Homestay+2"]'><div class="card-img">Image</div><div class="card-title">Reddoorz Near UNESA Citraland Surabaya</div></div>
+                    <div class="card" data-title="Hotel O near Ciputra World" data-desc="Hotel located at Jalan Darmo Permai Timur I, RW 01, Sono Kwijenan, Sukomanunggal, Surabaya, with a price range of IDR 170,000 and facilities such as Free Wifi, Free Parking, 24-hour Reception, Restaurant, Family Room, Luggage Storage, 24-hour Room Service, Non-smoking Rooms" data-images='["https://placehold.co/600x800/222/d4af37?text=Hotel+O+1", "https://placehold.co/600x800/333/d4af37?text=Hotel+O+2"]'><img src="https://placehold.co/600x800/222/d4af37?text=Hotel+O+1" class="card-img-src" alt="Hotel"><div class="card-title">Hotel O near Ciputra World Surabaya</div></div>
+                    <div class="card" data-title="RedDoorz near Bukit Darmo Golf" data-desc="Hotel located on Jalan 12 Darmo Permai Timur IV, Dukuh Pakis, Surabaya. With a price range of Rp130,000 and facilities including free Wifi, Car parking, 24-hour reception, Non-smoking rooms, Air conditioning in public areas, hand sanitizer" data-images='["image/reddoors_darmo/2.jpg", "image/reddoors_darmo/1.jpg", "image/reddoors_darmo/3.jpg"]'><img src="image/reddoors_darmo/1.jpg" class="card-img-src" alt="Hotel"><div class="card-title">RedDoorz near Bukit Darmo Golf</div></div>
+                    <div class="card" data-title="Reddoorz Near UNESA Citraland" data-desc="Hotel located at Jl. International Timur No.A2 / 3, Citraland, Kec. Sambikerep, Surabaya. With a price range of Rp150,000 and facilities including free Wifi, car parking, bicycle parking, CCTV in public areas" data-images='["image/reddoors_unesa/IMG_6285.jpg", "image/reddoors_unesa/IMG_6284.jpg"]'><img src="image/reddoors_unesa/IMG_6284.jpg" class="card-img-src" alt="Hotel"><div class="card-title">Reddoorz Near UNESA Citraland Surabaya</div></div>
                 </div>
             </div>
 
             <div class="tier-group">
                 <h3 class="tier-title">200.000</h3>
                 <div class="grid-3">
-                    <div class="card" data-title="RedDoorz Plus @ Grace Residence Surabaya" data-desc="Hotel located at Jl. Woodland 11 No.6/11-12, Made, Kec. Sambikerep, Surabaya. With a price range of Rp215,000 and facilities including free Wifi, free Parking, Non-smoking rooms, Air conditioning in public areas" data-images='["https://placehold.co/600x800/222/d4af37?text=Std+Hotel+1", "https://placehold.co/600x800/333/d4af37?text=Std+Hotel+2"]'><div class="card-img">Image</div><div class="card-title">RedDoorz Plus @ Grace Residence Surabaya</div></div>
-                    <div class="card" data-title="RedDoorz @ Citraland Surabaya" data-desc="Hotel located on Jl. Taman Puspa Raya, Sambikerep, Dukuh Pakis, Surabaya. With a price range of Rp250,000 and facilities including free Wifi, free Parking, 24-hour Reception, Family room, Luggage storage, Non-smoking rooms, Air conditioning in common areas, hand sanitizer" data-images='["https://placehold.co/600x800/222/d4af37?text=Biz+Hotel+1", "https://placehold.co/600x800/333/d4af37?text=Biz+Hotel+2"]'><div class="card-img">Image</div><div class="card-title">RedDoorz @ Citraland Surabaya</div></div>
-                    <div class="card" data-title="Super OYO Flagship 91863 Metro House" data-desc="Hotel located at Jalan Raya Dukuh Kupang Barat No. 50A, Dukuh Kupang, Kec. Dukuh Pakis, Surabaya City. With a price range of Rp215,000 and facilities including free Wi-Fi, free parking, 24-hour reception, luggage storage, room service, laundry service, non-smoking rooms, daily housekeeping service" data-images='["https://placehold.co/600x800/222/d4af37?text=Guest+House+1", "https://placehold.co/600x800/333/d4af37?text=Guest+House+2"]'><div class="card-img">Image</div><div class="card-title">Super OYO Flagship 91863 Metro House</div></div>
+                    <div class="card" data-title="RedDoorz Plus @ Grace Residence" data-desc="Hotel located at Jl. Woodland 11 No.6/11-12, Made, Kec. Sambikerep, Surabaya. With a price range of Rp215,000 and facilities including free Wifi, free Parking, Non-smoking rooms, Air conditioning in public areas" data-images='["https://placehold.co/600x800/222/d4af37?text=Grace+Res+1", "https://placehold.co/600x800/333/d4af37?text=Grace+Res+2"]'><img src="https://placehold.co/600x800/222/d4af37?text=Grace+Res+1" class="card-img-src" alt="Hotel"><div class="card-title">RedDoorz Plus @ Grace Residence Surabaya</div></div>
+                    <div class="card" data-title="RedDoorz @ Citraland Surabaya" data-desc="Hotel located on Jl. Taman Puspa Raya, Sambikerep, Dukuh Pakis, Surabaya. With a price range of Rp250,000 and facilities including free Wifi, free Parking, 24-hour Reception, Family room, Luggage storage, Non-smoking rooms, Air conditioning in common areas, hand sanitizer" data-images='["https://placehold.co/600x800/222/d4af37?text=RedDoorz+Citra+1", "https://placehold.co/600x800/333/d4af37?text=RedDoorz+Citra+2"]'><img src="https://placehold.co/600x800/222/d4af37?text=RedDoorz+Citra+1" class="card-img-src" alt="Hotel"><div class="card-title">RedDoorz @ Citraland Surabaya</div></div>
+                    <div class="card" data-title="Super OYO 91863 Metro House" data-desc="Hotel located at Jalan Raya Dukuh Kupang Barat No. 50A, Dukuh Kupang, Kec. Dukuh Pakis, Surabaya City. With a price range of Rp215,000 and facilities including free Wi-Fi, free parking, 24-hour reception, luggage storage, room service, laundry service, non-smoking rooms, daily housekeeping service" data-images='["https://placehold.co/600x800/222/d4af37?text=OYO+Metro+1", "https://placehold.co/600x800/333/d4af37?text=OYO+Metro+2"]'><img src="https://placehold.co/600x800/222/d4af37?text=OYO+Metro+1" class="card-img-src" alt="Hotel"><div class="card-title">Super OYO Flagship 91863 Metro House</div></div>
                 </div>
             </div>
 
             <div class="tier-group">
                 <h3 class="tier-title">300.000</h3>
                 <div class="grid-3">
-                    <div class="card" data-title="Hotel Lumba-Lumba Inn Waru" data-desc="Hotel located at Jl. Raya Waru No.1, Kedungrejo, Waru District, Sidoarjo Regency. With a price range of Rp300,000 and facilities such as WiFi, Parking, AC, Airport Transfer, 24-hour Front Desk, Pet-friendly, Luggage Storage, Free Parking" data-images='["https://placehold.co/600x800/222/d4af37?text=Premium+Suite+1", "https://placehold.co/600x800/333/d4af37?text=Premium+Suite+2"]'><div class="card-img">Image</div><div class="card-title">Hotel Lumba-Lumba Inn Waru</div></div>
-                    <div class="card" data-title="Super OYO Capital O 217" data-desc="Hotel located at Gallery Bukit Indah RK 3, Lontar, Sambikerep, Surabaya. With a price range of Rp300,000 and facilities including free WiFi, free parking, 24-hour reception, room service, laundry service, non-smoking rooms, daily housekeeping, and air conditioning in public areas." data-images='["https://placehold.co/600x800/222/d4af37?text=City+View+1", "https://placehold.co/600x800/333/d4af37?text=City+View+2"]'><div class="card-img">Image</div><div class="card-title">Super OYO Capital O 217</div></div>
-                    <div class="card" data-title="Hotel oval" data-desc="Hotel located at Jl. Diponegoro No.23, Darmo, Kec. Wonokromo, Surabaya. With a price range of Rp300,000 and facilities including free Wifi, free Parking, 24-hour Reception, Room service, Laundry service, Non-smoking rooms, Daily housekeeping, Air conditioning in public areas" data-images='["https://placehold.co/600x800/222/d4af37?text=Family+Stay+1", "https://placehold.co/600x800/333/d4af37?text=Family+Stay+2"]'><div class="card-img">Image</div><div class="card-title">Hotel oval</div></div>
+                    <div class="card" data-title="Hotel Lumba-Lumba Inn Waru" data-desc="Hotel located at Jl. Raya Waru No.1, Kedungrejo, Waru District, Sidoarjo Regency. With a price range of Rp300,000 and facilities such as WiFi, Parking, AC, Airport Transfer, 24-hour Front Desk, Pet-friendly, Luggage Storage, Free Parking" data-images='["https://placehold.co/600x800/222/d4af37?text=Lumba+Inn+1", "https://placehold.co/600x800/333/d4af37?text=Lumba+Inn+2"]'><img src="https://placehold.co/600x800/222/d4af37?text=Lumba+Inn+1" class="card-img-src" alt="Hotel"><div class="card-title">Hotel Lumba-Lumba Inn Waru</div></div>
+                    <div class="card" data-title="Super OYO Capital O 217" data-desc="Hotel located at Gallery Bukit Indah RK 3, Lontar, Sambikerep, Surabaya. With a price range of Rp300,000 and facilities including free WiFi, free parking, 24-hour reception, room service, laundry service, non-smoking rooms, daily housekeeping, and air conditioning in public areas." data-images='["https://placehold.co/600x800/222/d4af37?text=Capital+O+1", "https://placehold.co/600x800/333/d4af37?text=Capital+O+2"]'><img src="https://placehold.co/600x800/222/d4af37?text=Capital+O+1" class="card-img-src" alt="Hotel"><div class="card-title">Super OYO Capital O 217</div></div>
+                    <div class="card" data-title="Hotel oval" data-desc="Hotel located at Jl. Diponegoro No.23, Darmo, Kec. Wonokromo, Surabaya. With a price range of Rp300,000 and facilities including free Wifi, free Parking, 24-hour Reception, Room service, Laundry service, Non-smoking rooms, Daily housekeeping, Air conditioning in public areas" data-images='["https://placehold.co/600x800/222/d4af37?text=Hotel+Oval+1", "https://placehold.co/600x800/333/d4af37?text=Hotel+Oval+2"]'><img src="https://placehold.co/600x800/222/d4af37?text=Hotel+Oval+1" class="card-img-src" alt="Hotel"><div class="card-title">Hotel oval</div></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="full-width-title section-header-text">
+        <h2>Emergensi</h2>
+    </div>
+    <section class="section">
+        <div class="container grid-3">
+            <div class="card" 
+                 data-title="Kantor Polisi" 
+                 data-desc="Layanan keamanan dan ketertiban masyarakat yang siaga 24 jam. Siap membantu dan memberikan rasa aman bagi warga dan pengunjung Surabaya Barat."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Kantor+Polisi+1", "https://placehold.co/600x800/333/d4af37?text=Kantor+Polisi+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Kantor+Polisi+1" class="card-img-src" alt="Kantor Polisi">
+                <div class="card-title">Kantor Polisi</div>
+            </div>
+            <div class="card" 
+                 data-title="Kantor Pemadam" 
+                 data-desc="Unit respons darurat kebakaran dan penyelamatan (PMK). Tersedia untuk bertindak cepat menanggulangi insiden bencana di area kota."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Kantor+Pemadam+1", "https://placehold.co/600x800/333/d4af37?text=Kantor+Pemadam+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Kantor+Pemadam+1" class="card-img-src" alt="Kantor Pemadam">
+                <div class="card-title">Kantor Pemadam</div>
+            </div>
+            <div class="card" 
+                 data-title="Rumah Sakit" 
+                 data-desc="Fasilitas kesehatan dengan Unit Gawat Darurat (UGD) yang dilengkapi peralatan medis terkini untuk menangani pasien darurat secara komprehensif."
+                 data-images='["https://placehold.co/600x800/222/d4af37?text=Rumah+Sakit+1", "https://placehold.co/600x800/333/d4af37?text=Rumah+Sakit+2"]'>
+                <img src="https://placehold.co/600x800/222/d4af37?text=Rumah+Sakit+1" class="card-img-src" alt="Rumah Sakit">
+                <div class="card-title">Rumah Sakit</div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container footer-content">
-            <div class="copy">2026 Aurum West Trip. All Rights Reserved.</div>
+            <div class="copy">copyright &copy; 2026 Aurum West Trip</div>
             <div class="socials">
                 <div class="circle">img</div>
                 <div class="circle">img</div>

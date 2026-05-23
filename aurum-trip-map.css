@@ -391,32 +391,40 @@ body {
 .tab-content::-webkit-scrollbar-thumb:hover { background: rgba(212,175,55,0.75); }
 
 /* ==========================================================================
-   TOMBOL BACK TO HOME (PETA)
+   TOMBOL BACK TO HOME (PINDAH KE SIDEBAR HEADER)
    ========================================================================== */
 .back-home-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1100; /* Harus di atas layer Leaflet */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: #111111;
     color: #d4af37;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 13px;
-    border: 2px solid #d4af37;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    font-size: 12px;
+    border: 1px solid #d4af37;
+    margin-bottom: 20px; /* Jarak aman ke judul h1 di bawahnya */
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    align-self: flex-start; /* Meratakan tombol ke kiri header */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .back-home-btn:hover {
     background: #d4af37;
     color: #111111;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+}
+
+/* Hapus atau ganti pengaturan .back-home-btn yang berada di dalam @media (max-width: 768px) dengan ini */
+@media (max-width: 768px) {
+    .back-home-btn {
+        margin-bottom: 12px !important;
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+        align-self: center; /* Di HP otomatis ke tengah agar seimbang */
+    }
 }
 
 /* ==========================================================================
