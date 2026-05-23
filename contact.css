@@ -1,0 +1,83 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 10px;
+    background-color: #111111;
+}
+
+/* Gunakan ini untuk semua tombol kembali di seluruh website */
+.back-link {
+    display: inline-block;
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 400;
+    transition: 0.3s;
+    border: 1px solid #d4af37;
+    padding: 4px 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.back-link:hover { 
+    background: #d4af37; 
+    color: #111; 
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.poster-img {
+    width: 100%;
+    height: auto;
+    display: block; /* Penting agar tidak ada celah di bawah gambar */
+    min-height: 200px; /* Memberi ruang sementara saat gambar loading */
+    background-color: #eee; /* Warna abu-abu saat gambar belum muncul */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+
+h1 { text-align: center; }
+
+.contact-info { margin-bottom: 20px; }
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover { background-color: #555; }
+
+.social-link {
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+    font-weight: bold;
+    color: #d4af37; /* Warna Instagram */
+    text-decoration: none;
+}
+
