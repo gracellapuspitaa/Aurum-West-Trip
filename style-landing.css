@@ -321,8 +321,9 @@ body {
 
 .copy {
     font-weight: 400;
-    font-size: 0.9rem;
-    color: #888;
+    font-size: 1rem;       /* Ubah angka ini untuk ukuran (contoh: 0.9rem, 1rem, 1.2rem) */
+    color: #d4af37;        /* Ubah kode warna ini sesuai keinginan (contoh: #ffffff untuk putih) */
+    font-family: 'Inter', sans-serif; /* Pastikan font-family sama dengan body */
 }
 
 .socials {
