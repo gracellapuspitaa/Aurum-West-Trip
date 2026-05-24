@@ -28,9 +28,26 @@
 
 .back-link:hover { background: #d4af37; color: #111; }
 
-.logo-area { display: flex; gap: 20px; }
-.logo-area img { height: 45px; opacity: 0.8; transition: 0.3s; }
-.logo-area img:hover { opacity: 1; }
+.logo-area { 
+    display: flex; 
+    gap: 20px; 
+    align-items: center; 
+}
+
+.logo-area img { 
+    /* Mengatur tinggi dasar untuk semua logo agar seragam */
+    height: 75px;         
+    width: auto;          
+    object-fit: contain;  
+    opacity: 0.8; 
+    transition: 0.3s; 
+}
+
+/* Jika Anda ingin memastikan logo IIP ukurannya sama persis dengan UNAIR 
+   dan tidak ada perbedaan karena aspek rasio: */
+.logo-area img[alt="IIP"] {
+    height: 70px; /* Samakan nilainya dengan tinggi logo UNAIR */
+}
 
 .section-header-text {
     text-align: center;
