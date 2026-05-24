@@ -26,8 +26,6 @@
     border-radius: 5px;
 }
 
-.back-link:hover { background: #d4af37; color: #111; }
-
 .logo-area { 
     display: flex; 
     gap: 20px; 
