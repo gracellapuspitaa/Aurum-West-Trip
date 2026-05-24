@@ -148,23 +148,34 @@ body {
     align-items: center;
 }
 
+/* MODIFIKASI: Menghilangkan kotak dan membuat gambar buaya membesar ekstrim & mepet bawah */
 .history-image {
-    background-color: #1a1a1a;
-    height: 200px;
+    background-color: transparent; 
+    border: none;
+    height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Memaksa konten rata bawah */
     justify-content: center;
-    font-weight: bold;
-    color: #555;
-    border-radius: 10px;
-    border: 1px solid #333;
+    margin-bottom: -50px; /* Tarik lebih jauh ke bawah melewati batas padding */
+    position: relative;
+    z-index: 10;
+}
+
+.history-image span {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .history-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+    width: 500%; /* Diperbesar signifikan dari sebelumnya 140% */
+    max-width: 600px; /* Limit maksimal diperbesar agar bisa melebar */
+    height: auto;
+    object-fit: contain; /* Agar bentuk patung utuh */
+    border-radius: 0;
+    transform: translate(-40px, 35px); /* Dorong secara visual ke bawah agar memotong/menempel garis */
+    transform-origin: bottom center;
 }
 
 .history-text {
@@ -172,6 +183,8 @@ body {
     padding: 30px;
     border-radius: 10px;
     border: 1px solid #333;
+    position: relative;
+    z-index: 5;
 }
 
 .history-text p {
@@ -321,9 +334,9 @@ body {
 
 .copy {
     font-weight: 400;
-    font-size: 1rem;       /* Ubah angka ini untuk ukuran (contoh: 0.9rem, 1rem, 1.2rem) */
-    color: #d4af37;        /* Ubah kode warna ini sesuai keinginan (contoh: #ffffff untuk putih) */
-    font-family: 'Inter', sans-serif; /* Pastikan font-family sama dengan body */
+    font-size: 1rem;       
+    color: #d4af37;        
+    font-family: 'Inter', sans-serif; 
 }
 
 .socials {
@@ -332,24 +345,17 @@ body {
 }
 
 .circle {
-    background-color: #1a1a1a;
-    width: 40px;
-    height: 40px;
+    width: 75px;
+    height: 70px;
+    object-fit: cover;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
-    color: #888;
-    border: 1px solid #333;
     transition: 0.3s;
     cursor: pointer;
 }
 
-.circle:hover {
-    background-color: #d4af37;
-    color: #111;
-}
 
 /* ==========================================
    POPUP MODAL
@@ -474,12 +480,23 @@ body {
 }
 
 /* ==========================================
-   RESPONSIVE (HP)
+   RESPONSIVE (HP) - DIPERBAIKI
    ========================================== */
 @media (max-width: 768px) {
     .history-grid, .grid-3 {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Mengubah susunan grid menjadi 1 kolom vertikal */
     }
+    
+    /* Perbaikan khusus untuk gambar patung buaya di HP */
+    .history-image {
+        margin-bottom: 20px; /* Menghapus margin negatif agar tidak menutupi elemen lain */
+    }
+    .history-image img {
+        width: 100%; /* Menormalkan lebar dari 500% menjadi 100% layar HP */
+        max-width: 300px; /* Membatasi ukuran maksimal agar proporsional */
+        transform: translate(0, 0); /* Mengembalikan posisi ke tengah (reset transform) */
+    }
+
     .hero {
         margin: 0 10px 30px 10px;
     }
