@@ -37,11 +37,12 @@ body {
 .poster-img {
     width: 100%;
     height: auto;
-    display: block; /* Penting agar tidak ada celah di bawah gambar */
-    min-height: 200px; /* Memberi ruang sementara saat gambar loading */
-    background-color: #eee; /* Warna abu-abu saat gambar belum muncul */
+    aspect-ratio: 580 / 850; 
+    display: block; 
+    background-color: #eee; 
     border-radius: 8px;
     margin-bottom: 20px;
+    object-fit: cover;
 }
 
 
