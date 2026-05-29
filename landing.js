@@ -35,9 +35,20 @@ const nextImgBtn = document.querySelector('.next-img-btn');
 let currentCardImages = [];
 let currentImgIndex = 0;
 
+// --- PERUBAHAN 1: Efek memudar saat gambar baru di-download ---
 function updateModalImage() {
     if(currentCardImages.length > 0) {
+        // Buat gambar agak pudar saat proses ganti foto
+        modalGalleryImg.style.opacity = '0.3'; 
+        modalGalleryImg.style.transition = 'opacity 0.3s ease';
+        
+        // Ganti sumber gambar
         modalGalleryImg.src = currentCardImages[currentImgIndex];
+        
+        // Kembalikan ke warna terang otomatis HANYA JIKA gambar sudah selesai di-download
+        modalGalleryImg.onload = () => {
+            modalGalleryImg.style.opacity = '1';
+        };
     }
 }
 
@@ -66,9 +77,16 @@ function openModal(card) {
     document.body.style.overflow = 'hidden';
 }
 
+// --- PERUBAHAN 2: Menghapus gambar lama saat popup ditutup ---
 function closeModal() {
     modal.classList.remove('show-modal');
     document.body.style.overflow = 'auto';
+    
+    // Trik: Kosongkan gambar lama setelah popup selesai tertutup animasi (300ms)
+    // Ini mencegah gambar lama "nyangkut" saat buka card lain di internet lambat (Vercel)
+    setTimeout(() => {
+        modalGalleryImg.src = ""; 
+    }, 300);
 }
 
 // Pasang event listener ke semua kartu
